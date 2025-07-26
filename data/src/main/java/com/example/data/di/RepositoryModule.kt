@@ -2,6 +2,7 @@ package com.example.data.di
 
 import android.content.Context
 import androidx.room.Room
+import com.example.data.dataSource.PhotoLocalDataSourceImpl
 import com.example.data.dataSource.PhotoOnlineDataSourceImpl
 import com.example.data.local.dao.PhotoDao
 import com.example.data.local.database.AppDatabase
@@ -46,5 +47,11 @@ object RepositoryModule{
     @Provides
     @Singleton
     fun providePhotoDao(db: AppDatabase): PhotoDao = db.photoDao()
+
+    @Provides
+    @Singleton
+    fun providePhotoLocalDataSource(dao: PhotoDao): PhotoLocalDataSource =
+        PhotoLocalDataSourceImpl(dao)
+
 
 }
