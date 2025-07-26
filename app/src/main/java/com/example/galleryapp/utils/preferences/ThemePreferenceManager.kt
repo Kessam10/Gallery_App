@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
 
-private val Context.dataStore by preferencesDataStore(name = "settings")
+private val Context.dataStore by preferencesDataStore(name = "app_preferences")
 
 @Singleton
 class ThemePreferenceManager @Inject constructor(
@@ -21,11 +21,9 @@ class ThemePreferenceManager @Inject constructor(
     }
 
     val isDarkMode: Flow<Boolean> = context.dataStore.data
-        .map { preferences -> preferences[THEME_KEY] ?: false }
+        .map { prefs -> prefs[THEME_KEY] ?: false }
 
-    suspend fun toggleTheme(currentValue: Boolean) {
-        context.dataStore.edit { preferences ->
-            preferences[THEME_KEY] = !currentValue
-        }
+    suspend fun setDarkMode(value: Boolean) {
+        context.dataStore.edit { it[THEME_KEY] = value }
     }
 }

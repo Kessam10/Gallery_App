@@ -16,8 +16,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.galleryapp.composable.NetworkBanner
-import com.example.galleryapp.composable.ThemeToggle
 import com.example.galleryapp.navigation.NavGraph
 import com.example.galleryapp.presentation.screen.PhotosScreen
 import com.example.galleryapp.presentation.viewModel.theme.ThemeViewModel
@@ -35,7 +33,9 @@ class MainActivity : ComponentActivity() {
             val navController = rememberNavController()
 
             GalleryAppTheme(darkTheme = isDark) {
-                NavGraph(navController)
+                Scaffold() {innerPadding->
+                    NavGraph(modifier = Modifier.padding(innerPadding),navController)
+                }
             }
         }
     }

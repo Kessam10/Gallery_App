@@ -15,11 +15,12 @@ class ThemeViewModel @Inject constructor(
 ) : ViewModel() {
 
     val isDarkMode = themeManager.isDarkMode
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
+        .stateIn(viewModelScope, SharingStarted.Eagerly, false)
 
-    fun toggleTheme(currentValue: Boolean) {
+    fun toggleTheme(current: Boolean) {
         viewModelScope.launch {
-            themeManager.toggleTheme(currentValue)
+            themeManager.setDarkMode(!current)
         }
     }
 }
+
