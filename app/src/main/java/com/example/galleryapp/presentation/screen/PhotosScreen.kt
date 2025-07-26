@@ -46,7 +46,9 @@ fun PhotosScreen(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Text(stringResource(R.string.route), style = MaterialTheme.typography.headlineMedium,)
+            Text(
+                stringResource(R.string.route),
+                style = MaterialTheme.typography.headlineMedium,)
             ThemeToggle(themeViewModel, isDark)
         }
 

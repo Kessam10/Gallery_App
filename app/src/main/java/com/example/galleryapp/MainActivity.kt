@@ -28,9 +28,10 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         setContent {
-            val themeViewModel: ThemeViewModel = hiltViewModel()
-            val isDark by themeViewModel.isDarkMode.collectAsState()
+            val themeVM: ThemeViewModel = hiltViewModel()
+            val isDark by themeVM.isDarkMode.collectAsState()
             val navController = rememberNavController()
 
             GalleryAppTheme(darkTheme = isDark) {
