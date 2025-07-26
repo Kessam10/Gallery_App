@@ -1,0 +1,23 @@
+package com.example.data.dataSource
+
+import com.example.data.executeAPI
+import com.example.data.mappers.toEntity
+import com.example.data.online.services.PhotosService
+import com.example.domain.ApiResult
+import com.example.domain.entities.PhotoItemEntity
+import com.example.domain.repository.PhotoOnlineDataSource
+import kotlinx.coroutines.flow.Flow
+
+
+class PhotoOnlineDataSourceImpl(
+    private val webService: PhotosService
+):PhotoOnlineDataSource {
+    override suspend fun fetchPhotos(): Flow<ApiResult<List<PhotoItemEntity>>> {
+        return executeAPI {
+            webService.fetchPhotos().data?.map {
+                it.toEntity()
+            }?: listOf()
+        }
+    }
+
+}
