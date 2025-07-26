@@ -14,12 +14,7 @@ fun ThemeToggle(
     isDark: Boolean,
     modifier: Modifier = Modifier
 ) {
-    Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(8.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
+
 //        Text(text = if (isDark) "Dark Mode" else "Light Mode")
         Switch(
             checked = isDark,
@@ -28,4 +23,4 @@ fun ThemeToggle(
             }
         )
     }
-}
+

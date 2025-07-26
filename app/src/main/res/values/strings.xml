@@ -2,4 +2,6 @@
     <string name="app_name">Gallery App</string>
     <string name="dismiss">Dismiss</string>
     <string name="route">Route</string>
+    <string name="gallery_app">Gallery App</string>
+    <string name="splash_logo">Splash Logo</string>
 </resources>

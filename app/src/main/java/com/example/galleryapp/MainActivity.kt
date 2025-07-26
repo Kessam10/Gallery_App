@@ -15,8 +15,10 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.compose.rememberNavController
 import com.example.galleryapp.composable.NetworkBanner
 import com.example.galleryapp.composable.ThemeToggle
+import com.example.galleryapp.navigation.NavGraph
 import com.example.galleryapp.presentation.screen.PhotosScreen
 import com.example.galleryapp.presentation.viewModel.theme.ThemeViewModel
 import com.example.galleryapp.ui.theme.GalleryAppTheme
@@ -26,21 +28,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            val viewModel: ThemeViewModel = hiltViewModel()
-            val isDarkMode by viewModel.isDarkMode.collectAsState()
+            val themeViewModel: ThemeViewModel = hiltViewModel()
+            val isDark by themeViewModel.isDarkMode.collectAsState()
+            val navController = rememberNavController()
 
-            GalleryAppTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Column {
-                        NetworkBanner()
-                        ThemeToggle(viewModel, isDarkMode)
-                        PhotosScreen(modifier = Modifier.padding(innerPadding))
-                    }
-                }
+            GalleryAppTheme(darkTheme = isDark) {
+                NavGraph(navController)
             }
-
         }
     }
 }
