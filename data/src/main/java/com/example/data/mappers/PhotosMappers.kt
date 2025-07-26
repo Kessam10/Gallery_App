@@ -15,6 +15,10 @@ fun PhotosResponseModel.toEntity():PhotoResponse{
 
 fun PhotoDataModel.toEntity():PhotoItemEntity{
     return PhotoItemEntity(
-        albumId, id, title, url, thumbnailUrl
+        albumId,
+        id,
+        title,
+        url,
+        thumbnailUrl
     )
 }

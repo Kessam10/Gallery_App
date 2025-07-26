@@ -15,10 +15,9 @@ class PhotoOnlineDataSourceImpl @Inject constructor(
 ):PhotoOnlineDataSource {
     override suspend fun fetchPhotos(): Flow<ApiResult<List<PhotoItemEntity>>> {
         return executeAPI {
-            webService.fetchPhotos().data?.map {
+            webService.fetchPhotos().photos?.map {
                 it.toEntity()
             }?: listOf()
         }
     }
-
 }

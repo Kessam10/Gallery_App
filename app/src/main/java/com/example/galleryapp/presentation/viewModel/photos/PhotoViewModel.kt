@@ -1,7 +1,6 @@
-package com.example.galleryapp.presentation.viewModel
+package com.example.galleryapp.presentation.viewModel.photos
 
 import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.domain.ApiResult
 import com.example.domain.entities.PhotoItemEntity

@@ -66,6 +66,8 @@ dependencies {
     implementation(libs.glide)
     implementation(libs.accompanist.pager.indicators)
     implementation (libs.accompanist.pager)
+    implementation (libs.androidx.datastore.preferences.v100)
+    implementation (libs.androidx.foundation)
 
 
     implementation(libs.androidx.core.ktx)

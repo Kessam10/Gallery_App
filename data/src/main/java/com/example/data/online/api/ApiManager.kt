@@ -37,6 +37,12 @@ object ApiManager {
     @Singleton
     fun provideOkHttpClient(httpLoggingInterceptor: Interceptor): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val request = chain.request().newBuilder()
+                    .addHeader("Authorization", "Oarm3wThPbPnmUnWTFc4Zdbc1Qa6FhBjNYdJN4Ob4rg6qhKMGFHndCcX")
+                    .build()
+                chain.proceed(request)
+            }
             .addInterceptor(httpLoggingInterceptor)
             .build()
     }
@@ -48,7 +54,7 @@ object ApiManager {
         okHttpClient: OkHttpClient
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .baseUrl("https://api.pexels.com/")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

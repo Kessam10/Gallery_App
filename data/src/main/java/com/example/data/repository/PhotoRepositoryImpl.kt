@@ -9,13 +9,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-//class PhotoRepositoryImpl(
-//    private val onlineDataSource: PhotoOnlineDataSource
-//):PhotoRepository {
-//    override suspend fun getPhotos(): Flow<ApiResult<List<PhotoItemEntity>>> {
-//        return onlineDataSource.fetchPhotos()
-//    }
-//}
 class PhotoRepositoryImpl @Inject constructor(
     private val onlineDataSource: PhotoOnlineDataSource,
     private val localDataSource: PhotoLocalDataSource
