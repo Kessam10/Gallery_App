@@ -48,6 +48,10 @@ dependencies {
     implementation(project(":data"))
     implementation("io.coil-kt:coil-compose:2.5.0")
 
+    implementation (libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
+
     //splash api
     implementation(libs.androidx.core.splashscreen)
 

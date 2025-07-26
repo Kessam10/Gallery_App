@@ -42,6 +42,10 @@ dependencies {
     implementation(libs.logging.interceptor)
     implementation(libs.androidx.datastore.preferences)
 
+    implementation (libs.androidx.room.runtime)
+    kapt (libs.androidx.room.compiler)
+    implementation (libs.androidx.room.ktx)
+
     implementation(project(":domain"))
 
     implementation(libs.androidx.core.ktx)
