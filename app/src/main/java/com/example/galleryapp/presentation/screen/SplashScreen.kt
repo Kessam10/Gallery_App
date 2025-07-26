@@ -13,14 +13,13 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.galleryapp.R
 import com.example.galleryapp.presentation.viewModel.theme.ThemeViewModel
 import kotlinx.coroutines.delay
+
 @Composable
 fun SplashScreen(
     onTimeout: () -> Unit
@@ -40,13 +39,12 @@ fun SplashScreen(
         contentAlignment = Alignment.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.route_black),
-            contentDescription = stringResource(R.string.splash_logo),
-            colorFilter = ColorFilter.tint(
-                if (isDark) Color.White else Color.Unspecified
+            painter = painterResource(
+                id = R.drawable.route_black
             ),
-            modifier = Modifier.fillMaxWidth(0.5f)
+            contentDescription = stringResource(R.string.splash_logo),
+            modifier = Modifier
+                .fillMaxWidth(0.5f) // Scale as needed
         )
-
     }
 }
